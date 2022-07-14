@@ -23,15 +23,6 @@ if [ "$first" != 1 ];then
 			archurl="i386" ;;
 		*)
 			echo "unknown architecture"; exit 1 ;;
-		esac
-		ubuntu-rootfs-arm64.tar.xz"
-	fi
-	cur=`pwd`
-	mkdir -p "$folder"
-	cd "$folder"
-	echo "Decompressing Rootfs, please be patient."
-	proot --link2symlink tar -xJf ${cur}/${tarball}||:
-	cd "$cur"
 fi
 mkdir -p ubuntu-binds
 bin=start-ubuntu.sh
