@@ -23,6 +23,14 @@ if [ "$first" != 1 ];then
 			archurl="i386" ;;
 		*)
 			echo "unknown architecture"; exit 1 ;;
+					esac
+	fi
+	cur=`pwd`
+	mkdir -p "$folder"
+	cd "$folder"
+	echo "Decompressing Rootfs, please be patient."
+	proot --link2symlink tar -xJf ${cur}/${ubuntu-rootfs-arm64.tar.xz}||:
+	cd "$cur"
 fi
 mkdir -p ubuntu-binds
 bin=start-ubuntu.sh
@@ -90,5 +98,5 @@ termux-fix-shebang $bin
 echo "making $bin executable"
 chmod +x $bin
 echo "removing image for some space"
-rm $tarball
+rm ubuntu-rootfs-arm64.tar.xz
 echo "You can now launch Ubuntu with the ./${bin} script"
