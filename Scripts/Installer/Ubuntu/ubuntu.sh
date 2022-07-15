@@ -23,7 +23,8 @@ if [ "$first" != 1 ];then
 			archurl="i386" ;;
 		*)
 			echo "unknown architecture"; exit 1 ;;
-					esac
+	esac
+		wget "https://raw.githubusercontent.com/EXALAB/AnLinux-Resources/master/Rootfs/Ubuntu/${archurl}/ubuntu-rootfs-${archurl}.tar.xz" -O $tarball
 	fi
 	cur=`pwd`
 	mkdir -p "$folder"
